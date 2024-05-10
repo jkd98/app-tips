@@ -1,0 +1,22 @@
+<div class="space-y-3" >
+    <h2 class="font-black text-2xl" >Totales y propina</h2>
+    <p>
+        Subtotal a pagar:
+        <span class="font-bold" >{{subtotalAmount() | currency:'USD'}}</span>
+    </p>
+    <p>
+        Propina:
+        <span class="font-bold" >{{tipAmount() | currency:'USD'}}</span>
+    </p>
+    <p>
+        Total a pagar:
+        <span class="font-bold" >{{totalAmount() | currency:'USD'}}</span>
+    </p>
+</div>
+<button 
+    class="w-full bg-black uppercase text-white font-bold mt-10 p-3 disabled:opacity-10" 
+    [disabled]="totalAmount()===0"
+    (click)="handleSaveOrder()"
+    >
+    Guardar Orden
+</button>

@@ -1,0 +1,32 @@
+<!-- Titulo -->
+<h2 class="font-black text-4xl" >Consumo</h2>
+<!-- Contenedor Orden -->
+<div class="space-y-3 mt-10">
+    @if (order().length === 0) {
+        <p class="text-center">La orden esta vacía</p>
+    }@else {
+        <!-- Items de Orden -->
+        @for (item of order(); track $index) {
+            <!-- Item -->
+            <div 
+                [id]="'oI'+$index"
+                class="flex justify-between border-t border-gray-200 py-5 last-of-type:border-b items-center"
+                >
+                <div>
+                    <p class="text-lg">
+                        {{item.name}} - {{ item.price | currency:'USD' }}
+                    </p>
+                    <p class="font-black">
+                        Cantidad: {{item.quantity}} - {{ (item.price*item.quantity) | currency:'USD' }}
+                    </p>
+                </div>
+                <button
+                    class="bg-red-600 h-8 w-8 rounded-full text-white font-black"    
+                    (click)="handleRemoveItem(item.id)"
+                    >
+                    X
+                </button>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <h3 class="font-black text-2xl">Propina:</h3>
+    <form >
+        @for (option of tipOptons; track $index) {
+            <div class="flex gap-2" [id]="'tp'+$index" >
+                <label [for]="option.id">{{option.label}}</label>
+                <input 
+                    type="radio" 
+                    name="tip" 
+                    [id]="option.id" 
+                    [value]="option.value" 
+                    [(ngModel)]="tip" 
+                    (change)="handleTip()" 
+                    [checked]="option.value===tipComputed()"
+                    >
+            </div>
+        }
+    </form>
+</div>

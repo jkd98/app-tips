@@ -56,6 +56,9 @@ export class OrderService {
     console.log("Eliminando item..."+id);
     // Traer todos los diferentes al id enviado
     const updatedOrder = this.orderReadonly().filter((item)=>item.id!==id);
+    if(updatedOrder.length === 0){
+      this.tip.set(0);
+    }
     this.order.set(updatedOrder);
     //console.log(updatedOrder);
   }
